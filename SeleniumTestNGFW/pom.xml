@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mvnseltng</groupId>
+  <artifactId>SeleniumTestNGFW</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>SeleniumTestNGFW</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+  	<SeleniumVersion>3.5.3</SeleniumVersion>
+	<projectDir>${project.basedir}</projectDir>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependency>
+    	<groupId>org.seleniumhq.selenium</groupId>
+    	<artifactId>selenium-java</artifactId>
+    	<version>${SeleniumVersion}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>6.10</version>
+    <scope>test</scope>
+</dependency>
+	
+  </dependencies>
+  <build>
+  <pluginManagement>
+  <plugins>
+    <plugin>
+        <groupId>com.lazerycode.selenium</groupId>
+        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+        <version>1.0.14</version>
+        <configuration>
+            <!-- root directory that downloaded driver binaries will be stored in -->
+            <rootStandaloneServerDirectory>${projectDir}/browserDrivers/binaries</rootStandaloneServerDirectory>
+            <!-- Where you want to store downloaded zip files -->
+            <downloadedZipFileDirectory>${projectDir}/browserDrivers/zips</downloadedZipFileDirectory>
+			<onlyGetDriversForHostOperatingSystem>false</onlyGetDriversForHostOperatingSystem>
+            <!-- Operating systems you want to download binaries for (Only valid options are: windows, linux, osx)
+            <operatingSystems>
+				<windows>true</windows>
+				<linux>true</linux>
+				<mac>true</mac>
+			</operatingSystems-->
+			<!-- Download 64bit binaries -->
+            <sixtyFourBitBinaries>true</sixtyFourBitBinaries>
+            <!-- If set to false will download every version available (Other filters will be taken into account -->
+            <onlyGetLatestVersions>true</onlyGetLatestVersions>
+        </configuration>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>selenium</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+     <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20</version>
+      </plugin>
+</plugins>
+</pluginManagement>
+</build>
+</project>

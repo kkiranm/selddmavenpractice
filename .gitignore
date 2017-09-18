@@ -1,0 +1,6 @@
+SeleniumTestNGFW/browserDrivers/
+SeleniumTestNGFW/target/
+*.classpath
+*.project
+*.prefs
+SeleniumTestNGFW/test-output/
