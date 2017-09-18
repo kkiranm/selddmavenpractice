@@ -2,6 +2,7 @@ package com.mvnseltng.global;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -19,6 +20,8 @@ public class BrowserFactory {
 		//browser = driverSettings.getBrowser();
 		
 		if(browser.equalsIgnoreCase("chrome")){
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--disable-extensions");
 			driver = new ChromeDriver();
 		} else if(browser.equalsIgnoreCase("firefox")){
 			//System.setProperty("webdriver.gecko.driver", )
