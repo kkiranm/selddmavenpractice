@@ -18,6 +18,7 @@ public class Hooks {
 	private String browser;
 
 	public Hooks() throws IOException{
+		driver = null;
 		driverSettings = new DriverSettings();
 		browserFactory = new BrowserFactory();
 		browser = driverSettings.getBrowser();

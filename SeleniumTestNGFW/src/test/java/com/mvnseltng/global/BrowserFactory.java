@@ -11,17 +11,22 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class BrowserFactory {
 
-	//protected String browser;
+	public BrowserFactory(){
+		String cwdpath = System.getProperty("user.dir");
+		String browserDrivers = cwdpath+"\\browserDrivers";
+		System.setProperty("webdriver.chrome.driver", browserDrivers+"\\chromedriver.exe");
+		System.setProperty("webdriver.ie.driver", browserDrivers+"\\IEDriverServer.exe");
+		System.setProperty("webdriver.gecko.driver", browserDrivers+"\\geckodriver.exe");
+		
+	}
 	
 	public WebDriver selectBrowser(WebDriver driver, String browser){
-
-		//DriverSettings driverSettings = new DriverSettings();
-		//browser = driverSettings.getBrowser();
 		
-		if(browser.equalsIgnoreCase("chrome")){
-			driver = new ChromeDriver();
-		} else if(browser.equalsIgnoreCase("firefox")){
-			//System.setProperty("webdriver.gecko.driver", )
+		if (driver == null){
+				
+		if(browser.equalsIgnoreCase("chrome") || browser.equalsIgnoreCase("gc")){
+			driver = new ChromeDriver();	
+		} else if(browser.equalsIgnoreCase("firefox")|| browser.equalsIgnoreCase("ff")){
 			driver = new FirefoxDriver();
 		} else if(browser.equalsIgnoreCase("ie")){
 			driver = new InternetExplorerDriver();
@@ -29,12 +34,12 @@ public class BrowserFactory {
 			driver = new PhantomJSDriver();
 		} else if(browser.equalsIgnoreCase("edge")){
 			driver = new EdgeDriver();
-		} else if(browser.equalsIgnoreCase("safari")){
+		} else if(browser.equalsIgnoreCase("safari")|| browser.equalsIgnoreCase("sf")){
 			driver = new SafariDriver();
 		} else if(browser.equalsIgnoreCase("opera")){
 			driver = new OperaDriver();
 		}
-				
+	}			
 		return driver;
 	}
 }
